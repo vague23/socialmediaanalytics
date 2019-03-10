@@ -101,8 +101,7 @@ def get_url_data_for_medium(medium, campaign_id):
 
 
 def get_intraday_post_distr_for_medium(medium, campaign_id):
-    cnx = mysql.connector.connect(user='root', password='password',
-                                  host='127.0.0.1', database='mydb')
+    cnx = get_db_connection()
     cursor = cnx.cursor()
 
     cursor.execute("""select hour(timestamp), count(*)

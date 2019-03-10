@@ -160,8 +160,7 @@ def save_mentions(mentions, status_id):
 
 
 def save_hashtags(hashtags, status_id):
-    cnx = mysql.connector.connect(user='root', password='password',
-                                  host='127.0.0.1', database='mydb')
+    cnx = get_db_connection()
     cursor = cnx.cursor()
     for h in hashtags:
         cursor.execute("""insert into hashtag (hashtag, post_post_id) values (%s,%s)""", (h, status_id))
